@@ -32,5 +32,7 @@ nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```{r scatterplot_fli/bill, echo=FALSE, message=FALSE, warning=FALSE}
 
 ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+
+ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
