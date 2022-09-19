@@ -7,11 +7,11 @@ date: "2022-09-17"
 
 
 Download the a package containing the penguins dataset in console and  load the penguins dataset
-```{r include=FALSE}
+```{r load_data, include=FALSE}
 data("penguins", package = "palmerpenguins")
 ```
 
-```{r}
+```{r show_data}
 penguins
 ```
 
@@ -20,9 +20,17 @@ penguins
 **·** The size of the dataset is **`r nrow(penguins)` rows** and **`r ncol(penguins)` columns**.
 
 
-```{r drop missing values, include=FALSE}
+```{r drop_missing_values, include=FALSE}
 library(tidyverse)
 nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```
 
 **·** And we calculate the **mean flipper length** is `r  mean(nonna_flipper$flipper_length_mm)`(*missing values are removed*)
+
+**·**Here is a scatter plot of flipper_length_mm (y) vs bill_length_mm (x)
+
+```{r scatterplot_fli/bill, echo=FALSE, message=FALSE, warning=FALSE}
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
+```
+
