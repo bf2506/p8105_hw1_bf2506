@@ -3,8 +3,15 @@ title: "p8105_hw1_bf2506"
 output: html_document
 date: "2022-09-17"
 ---
-#Prolem 1
 
+Load tidyverse
+
+```{r tidy}
+library(tidyverse)
+```
+
+
+#Prolem 1
 
 Download the a package containing the penguins dataset in console and  load the penguins dataset
 ```{r load_data, include=FALSE}
@@ -21,7 +28,6 @@ penguins
 
 
 ```{r drop_missing_values, include=FALSE}
-library(tidyverse)
 nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```
 
@@ -38,7 +44,10 @@ ggsave("scatter_plot.pdf", height = 4, width = 6)
 
 #Problem 2
 
-```{r problem2_df, echo=FALSE, message=FALSE, warning=FALSE}
+
+**·** Create a data frame
+
+```{r problem2_df, message=FALSE, warning=FALSE}
 problem2_df = tibble(
   vec_numeric = rnorm(10),
   
@@ -49,5 +58,17 @@ problem2_df = tibble(
   vec_factor = factor(c("fail", "pass", "good", "good", "pass", "pass", "fail", "good", "good", "good"))
 )
 problem2_df
+```
+ 
+**·** Take the mean of a variable in problem2_df
+```{r mean}
+trial_num = mean(problem2_df$vec_numeric)
+trial_log = mean(problem2_df$vec_logical)
+trial_char = mean(problem2_df$vec_char)
+trial_fac = mean(problem2_df$vec_factor)
+trial_num
+trial_log
+trial_char
+trial_fac
 ```
 
