@@ -3,27 +3,26 @@ title: "p8105_hw1_bf2506"
 output: html_document
 date: "2022-09-17"
 ---
+#Prolem 1
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+Download the a package containing the penguins dataset in console and  load the penguins dataset
+```{r include=FALSE}
+data("penguins", package = "palmerpenguins")
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+penguins
 ```
 
-## Including Plots
+**·** Penguins dataset cotains **8** varaibles, which is *"species"*, *"island"*, *"bill_length_mm"*, *"bill_depth_mm"*, *"flipper_length_mm"*, *"body_mass_g"*, *"sex"*, *"year"*.
 
-You can also embed plots, for example:
+**·** The size of the dataset is **`r nrow(penguins)` rows** and **`r ncol(penguins)` columns**.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+```{r drop missing values, include=FALSE}
+library(tidyverse)
+nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**·** And we calculate the **mean flipper length** is `r  mean(nonna_flipper$flipper_length_mm)`(*missing values are removed*)
