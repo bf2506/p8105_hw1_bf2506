@@ -9,9 +9,9 @@ library(tidyverse) #Load tidyverse
 ```
 
 
-#Prolem 1
+### Prolem 1
 
-Download the a package containing the penguins dataset in console and  load the penguins dataset
+#### Download the package containing penguins dataset in console and load this dataset
 ```{r load_data, include=FALSE}
 data("penguins", package = "palmerpenguins")
 ```
@@ -30,8 +30,8 @@ nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```
 
 **·** And we calculate the **mean flipper length** is `r  mean(nonna_flipper$flipper_length_mm)`(*missing values are removed*)
-
-**·**Here is a scatter plot of flipper_length_mm (y) vs bill_length_mm (x)
+     
+#### Here is a **scatter plot of flipper_length_mm (y) vs bill_length_mm (x)**
 
 ```{r scatterplot_fli/bill, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -40,10 +40,9 @@ ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)
 ggsave("scatter_plot.pdf", height = 4, width = 6)
 ```
 
-#Problem 2
+### Problem 2
 
-
-**·** Create a data frame
+#### Create a data frame
 
 ```{r problem2_df, echo=FALSE, message=FALSE, warning=FALSE}
 set.seed(1)
@@ -61,7 +60,7 @@ problem2_df = tibble(
 problem2_df
 ```
  
-**·** Take the mean of a variable in problem2_df
+#### Take the mean of a variable in problem2_df
 ```{r mean, message=FALSE, warning=FALSE, include=FALSE}
 trial_num = mean(problem2_df$vec_numeric)
 trial_log = mean(problem2_df$vec_logical)
@@ -69,11 +68,22 @@ trial_char = mean(problem2_df$vec_char)
 trial_fac = mean(problem2_df$vec_factor)
 ```
 
-The mean of vec_numeric is `r trial_num`,  
-The mean of vec_logical is `r trial_log`,  
-The mean of vec_char is `r trial_char`,  
-The mean of vec_factor is `r trial_fac`
+**·**The mean of vec_numeric is `r trial_num`,  
+**·**The mean of vec_logical is `r trial_log`,  
+**·**The mean of vec_char is `r trial_char`,  
+**·**The mean of vec_factor is `r trial_fac`.
 
-**numeric and logical** vector works and **character and factor** vectors doesn’t work
+**numeric and logical** vector works and **character and factor** vectors doesn’t work.
 
-**·**Convert variables
+#### Convert variables
+```{r transfer_to_num, eval=FALSE, include=FALSE}
+vec_logical = as.numeric(problem2_df$vec_logical)
+vec_char = as.numeric(problem2_df$vec_char)
+vec_factor = as.numeric(problem2_df$vec_factor)
+vec_logical
+vec_char
+vec_factor
+```
+What happens
+and why? 
+Does this help explain what happens when you try to take the mean?
