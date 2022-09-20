@@ -4,10 +4,8 @@ output: html_document
 date: "2022-09-17"
 ---
 
-Load tidyverse
-
-```{r tidy}
-library(tidyverse)
+```{r tidy, include=FALSE}
+library(tidyverse) #Load tidyverse
 ```
 
 
@@ -47,7 +45,9 @@ ggsave("scatter_plot.pdf", height = 4, width = 6)
 
 **·** Create a data frame
 
-```{r problem2_df, message=FALSE, warning=FALSE}
+```{r problem2_df, echo=FALSE, message=FALSE, warning=FALSE}
+set.seed(1)
+
 problem2_df = tibble(
   vec_numeric = rnorm(10),
   
@@ -57,18 +57,23 @@ problem2_df = tibble(
   
   vec_factor = factor(c("fail", "pass", "good", "good", "pass", "pass", "fail", "good", "good", "good"))
 )
+
 problem2_df
 ```
  
 **·** Take the mean of a variable in problem2_df
-```{r mean}
+```{r mean, message=FALSE, warning=FALSE, include=FALSE}
 trial_num = mean(problem2_df$vec_numeric)
 trial_log = mean(problem2_df$vec_logical)
 trial_char = mean(problem2_df$vec_char)
 trial_fac = mean(problem2_df$vec_factor)
-trial_num
-trial_log
-trial_char
-trial_fac
 ```
 
+The mean of vec_numeric is `r trial_num`,  
+The mean of vec_logical is `r trial_log`,  
+The mean of vec_char is `r trial_char`,  
+The mean of vec_factor is `r trial_fac`
+
+**numeric and logical** vector works and **character and factor** vectors doesn’t work
+
+**·**Convert variables
