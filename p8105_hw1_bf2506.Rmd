@@ -30,7 +30,7 @@ nonna_flipper=drop_na(penguins,flipper_length_mm)
 ```
 
 **·** And we calculate the **mean flipper length** is `r  mean(nonna_flipper$flipper_length_mm)`(*missing values are removed*)
-     
+
 #### Here is a **scatter plot of flipper_length_mm (y) vs bill_length_mm (x)**
 
 ```{r scatterplot_fli/bill, echo=FALSE, message=FALSE, warning=FALSE}
@@ -76,7 +76,7 @@ trial_fac = mean(problem2_df$vec_factor)
 **numeric and logical** vector works and **character and factor** vectors doesn’t work.
 
 #### Convert variables
-```{r transfer_to_num, eval=FALSE, include=FALSE}
+```{r transfer_to_num, eval=FALSE, message=FALSE, warning=FALSE, include=FALSE}
 vec_logical = as.numeric(problem2_df$vec_logical)
 vec_char = as.numeric(problem2_df$vec_char)
 vec_factor = as.numeric(problem2_df$vec_factor)
@@ -84,6 +84,8 @@ vec_logical
 vec_char
 vec_factor
 ```
-What happens
-and why? 
-Does this help explain what happens when you try to take the mean?
+**logical and factor** vector can be convert to a numeric type but **character** vectors can not.  
+
+**·**I think logical variables and factor variables can be converted to numeric type is because we can use numbers to present their meanings, but there is no rule for character variables
+
+**·**When we calculate the mean, numeric variables and logical variables have corresponding numeric meanings to be calculated, but factor variables and character variables do not.
